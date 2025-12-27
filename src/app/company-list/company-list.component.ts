@@ -2,13 +2,18 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { getDatabase, ref, onValue } from 'firebase/database';
 
+//import { NavbarComponent } from '../navbar/navbar.component';
+import { CompanyFormComponent } from '../company-form/company-form';
 
 import '../firebase.config';
 
 @Component({
   selector: 'app-company-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    CompanyFormComponent
+  ],
   templateUrl: './company-list.component.html',
   styleUrls: ['./company-list.component.css']
 })

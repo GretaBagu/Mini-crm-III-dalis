@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router'; // ⬅️ papildyta Router
 
 @Component({
   selector: 'app-confirmation',
@@ -12,7 +12,11 @@ import { RouterModule } from '@angular/router';
 export class ConfirmationComponent {
   companyData = history.state.data;
 
-  constructor() {
-    console.log(' Gauti duomenys:', this.companyData);
+  constructor(private router: Router) {
+    console.log('Gauti duomenys:', this.companyData);
+  }
+
+  goBack() {
+    this.router.navigate(['/companies']); // 👈 pakeisk "/companies" į savo realų maršrutą, jei skiriasi
   }
 }

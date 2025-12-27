@@ -1,0 +1,34 @@
+<div class="login-container">
+  <h2>Prisijungimas</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="email">El. paštas</label>
+      <input id="email" type="email" formControlName="email" placeholder="Įveskite el. paštą" />
+      <div *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" class="error">
+        Būtinas validus el. pašto adresas
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Slaptažodis</label>
+      <input id="password" type="password" formControlName="password" placeholder="Įveskite slaptažodį" />
+      <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="error">
+        Slaptažodis privalomas (min. 6 simboliai)
+      </div>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <button type="submit" [disabled]="isLoading || loginForm.invalid">Prisijungti</button>
+    <button type="button" (click)="navigateToRegister()">Neturi paskyros? Registruokis</button>
+
+    <div *ngIf="isLoading" class="loading">
+      Kraunama...
+    </div>
+  </form>
+</div>
+

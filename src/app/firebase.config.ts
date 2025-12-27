@@ -17,15 +17,15 @@ const firebaseConfig = {
   databaseURL: "https://mini-crm3-default-rtdb.europe-west1.firebasedatabase.app"
 };
 
-// Inicializuojam app
+
 const app = initializeApp(firebaseConfig);
 
-// Čia sukurti servisai
+
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 export const realtimeDb = getDatabase(app);
 export const analytics = getAnalytics(app); // jei reikia
 
-// Jei kur nors reikia pačios config
+
 export { firebaseConfig };

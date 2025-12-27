@@ -1,0 +1,21 @@
+<div class="register-container">
+  <h2>Registracija</h2>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>El. paštas</label>
+      <input type="email" formControlName="email">
+    </div>
+
+    <div class="form-group">
+      <label>Slaptažodis</label>
+      <input type="password" formControlName="password">
+    </div>
+
+    <button type="submit" [disabled]="isLoading">Registruotis</button>
+
+    <div class="loading" *ngIf="isLoading">⏳ Kraunama...</div>
+    <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <div class="success" *ngIf="successMessage">{{ successMessage }}</div>
+  </form>
+</div>

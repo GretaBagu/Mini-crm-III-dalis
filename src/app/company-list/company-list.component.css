@@ -1,0 +1,55 @@
+.layout-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+.table-section {
+  width: 100%;
+
+}
+
+
+.form-section {
+  width: 70%;
+
+}
+app-company-form {
+  display: block;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 0px;
+}
+
+
+
+.table-container {
+  overflow-x: auto;
+}
+
+
+table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  white-space: nowrap;
+  border: 1px solid #ccc;
+}
+
+
+.center-title {
+  text-align: left;
+  margin-top: 10px;
+  font-weight: bold;
+}

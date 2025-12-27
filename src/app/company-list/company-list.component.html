@@ -1,31 +1,41 @@
-<h2>Įmonių sąrašas</h2>
+<div class="layout-container">
 
-<div *ngIf="loading">🔄 Kraunama...</div>
-<div *ngIf="error" style="color: red;">⚠️ {{ error }}</div>
 
-<table *ngIf="!loading && !error && companies.length > 0" border="1">
-  <thead>
-  <tr>
-    <th>Pavadinimas</th>
-    <th>Kodas</th>
-    <th>PVM</th>
-    <th>Adresas</th>
-    <th>El. paštas</th>
-    <th>Telefonas</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let company of companies">
-    <td>{{ company.companyName }}</td>
-    <td>{{ company.companyCode }}</td>
-    <td>{{ company.vatCode }}</td>
-    <td>{{ company.address }}</td>
-    <td>{{ company.email }}</td>
-    <td>{{ company.phone }}</td>
-  </tr>
-  </tbody>
-</table>
+  <div class="table-section">
+    <h2>Įmonių sąrašas</h2>
+    <div *ngIf="loading">🔄 Kraunama...</div>
+    <div *ngIf="error" style="color: red;">⚠️ {{ error }}</div>
 
-<div *ngIf="!loading && companies.length === 0">
-  ⚠️ Nėra įrašų.
+    <div class="table-container">
+      <table *ngIf="!loading && !error && companies.length > 0">
+        <thead>
+        <tr>
+          <th>Įmonės pavadinimas</th>
+          <th>Įmonės kodas</th>
+          <th>PVM kodas</th>
+          <th>Adresas</th>
+          <th>El. paštas</th>
+          <th>Telefonas</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let company of companies">
+          <td>{{ company.companyName }}</td>
+          <td>{{ company.companyCode }}</td>
+          <td>{{ company.vatCode }}</td>
+          <td>{{ company.address }}</td>
+          <td>{{ company.email }}</td>
+          <td>{{ company.phone }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <div class="form-section">
+    <h2 class="center-title">Registruoti naują įmonę</h2>
+    <app-company-form></app-company-form>
+  </div>
+
 </div>

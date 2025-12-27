@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { getDatabase, ref, push, set } from 'firebase/database';
 
-
 import '../firebase.config';
 
 @Component({
@@ -76,32 +75,32 @@ export class CompanyFormComponent {
   submit(): void {
     console.log('Registracijos bandymas');
 
-    if (this.form.valid) {
-      const formData = JSON.parse(JSON.stringify(this.form.getRawValue()));
-      formData.contacts = this.contacts.controls.map(contact => contact.value);
-
-      console.log('Galutiniai duomenys:', formData);
-
-      const db = getDatabase();
-      const companiesRef = ref(db, 'companies');
-      const newCompanyRef = push(companiesRef);
-
-      set(newCompanyRef, formData)
-        .then(() => {
-          alert('Duomenys išsaugoti į Firebase');
-
-          this.router.navigate(['/confirmation'], {
-            state: { data: formData }
-          });
-        })
-        .catch((error) => {
-          console.error('Klaida išsaugant:', error);
-          alert('Nepavyko išsaugoti duomenų į serverį');
-        });
-
-    } else {
+    if (this.form.invalid) {
       console.warn('Forma neteisinga');
-      this.form.markAllAsTouched();
+      this.form.markAllAsTouched(); // 👈 būtina, kad rodyti klaidas
+      return;
     }
+
+    const formData = JSON.parse(JSON.stringify(this.form.getRawValue()));
+    formData.contacts = this.contacts.controls.map(contact => contact.value);
+
+    console.log('Galutiniai duomenys:', formData);
+
+    const db = getDatabase();
+    const companiesRef = ref(db, 'companies');
+    const newCompanyRef = push(companiesRef);
+
+    set(newCompanyRef, formData)
+      .then(() => {
+        alert('Duomenys išsaugoti į Firebase');
+
+        this.router.navigate(['/confirmation'], {
+          state: { data: formData }
+        });
+      })
+      .catch((error) => {
+        console.error('Klaida išsaugant:', error);
+        alert('Nepavyko išsaugoti duomenų į serverį');
+      });
   }
 }

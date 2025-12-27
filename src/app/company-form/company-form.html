@@ -4,16 +4,25 @@
   <div>
     <label>Įmonės pavadinimas *</label>
     <input type="text" formControlName="companyName" />
+    <div *ngIf="form.get('companyName')?.invalid && form.get('companyName')?.touched">
+      <small style="color:red">Pavadinimas yra privalomas</small>
+    </div>
   </div>
 
   <div>
     <label>Įmonės kodas</label>
     <input type="text" formControlName="companyCode" />
+    <div *ngIf="form.get('companyCode')?.invalid && form.get('companyCode')?.touched">
+      <small style="color:red">Tik skaičiai leidžiami</small>
+    </div>
   </div>
 
   <div>
     <label>PVM kodas</label>
     <input type="text" formControlName="vatCode" />
+    <div *ngIf="form.get('vatCode')?.invalid && form.get('vatCode')?.touched">
+      <small style="color:red">Netinkamas PVM formatas</small>
+    </div>
   </div>
 
   <div>
@@ -24,11 +33,20 @@
   <div>
     <label>El. paštas *</label>
     <input type="email" formControlName="email" />
+    <div *ngIf="form.get('email')?.errors?.['required'] && form.get('email')?.touched">
+      <small style="color:red">El. paštas privalomas</small>
+    </div>
+    <div *ngIf="form.get('email')?.errors?.['email'] && form.get('email')?.touched">
+      <small style="color:red">Neteisingas el. pašto formatas</small>
+    </div>
   </div>
 
   <div>
     <label>Telefonas</label>
     <input type="text" formControlName="phone" placeholder="+370" />
+    <div *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched">
+      <small style="color:red">Įrašykite numerį formatu +37012345678</small>
+    </div>
   </div>
 
   <button type="button" (click)="toggleContactForm()">Papildomi duomenys</button>

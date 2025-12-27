@@ -7,6 +7,7 @@
   <tr><th>Adresas</th><td>{{ companyData?.address }}</td></tr>
   <tr><th>El. paštas</th><td>{{ companyData?.email }}</td></tr>
   <tr><th>Telefonas</th><td>{{ companyData?.phone }}</td></tr>
+
 </table>
 
 <br />
@@ -31,3 +32,6 @@
 </table>
 
 <p *ngIf="!companyData?.contacts?.length">Kontaktiniai duomenys nepateikti.</p>
+<div style="margin-top: 30px;">
+  <button (click)="goBack()">🔙 Grįžti į įmonių sąrašą</button>
+</div>

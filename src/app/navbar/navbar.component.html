@@ -1,0 +1,6 @@
+<nav class="navbar">
+  <div class="logo">MINI CRM</div>
+  <ul class="nav-links" *ngIf="isLoggedIn()">
+    <li><button class="logout-button" (click)="logout()">Atsijungti</button></li>
+  </ul>
+</nav>
