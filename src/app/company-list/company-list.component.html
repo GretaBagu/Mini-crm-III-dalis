@@ -1,0 +1,31 @@
+<h2>Įmonių sąrašas</h2>
+
+<div *ngIf="loading">🔄 Kraunama...</div>
+<div *ngIf="error" style="color: red;">⚠️ {{ error }}</div>
+
+<table *ngIf="!loading && !error && companies.length > 0" border="1">
+  <thead>
+  <tr>
+    <th>Pavadinimas</th>
+    <th>Kodas</th>
+    <th>PVM</th>
+    <th>Adresas</th>
+    <th>El. paštas</th>
+    <th>Telefonas</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let company of companies">
+    <td>{{ company.companyName }}</td>
+    <td>{{ company.companyCode }}</td>
+    <td>{{ company.vatCode }}</td>
+    <td>{{ company.address }}</td>
+    <td>{{ company.email }}</td>
+    <td>{{ company.phone }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!loading && companies.length === 0">
+  ⚠️ Nėra įrašų.
+</div>

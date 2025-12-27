@@ -1,0 +1,33 @@
+<h2>Patvirtinimo duomenys</h2>
+
+<table>
+  <tr><th>Įmonės pavadinimas</th><td>{{ companyData?.companyName }}</td></tr>
+  <tr><th>Įmonės kodas</th><td>{{ companyData?.companyCode }}</td></tr>
+  <tr><th>PVM kodas</th><td>{{ companyData?.vatCode }}</td></tr>
+  <tr><th>Adresas</th><td>{{ companyData?.address }}</td></tr>
+  <tr><th>El. paštas</th><td>{{ companyData?.email }}</td></tr>
+  <tr><th>Telefonas</th><td>{{ companyData?.phone }}</td></tr>
+</table>
+
+<br />
+<h3>Kontaktiniai asmenys</h3>
+<table *ngIf="companyData?.contacts?.length">
+  <thead>
+  <tr>
+    <th>Vardas</th>
+    <th>Pavardė</th>
+    <th>Pareigos</th>
+    <th>Telefonas</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let contact of companyData.contacts">
+    <td>{{ contact.contactName }}</td>
+    <td>{{ contact.contactSurname }}</td>
+    <td>{{ contact.contactPosition }}</td>
+    <td>{{ contact.contactPhone }}</td>
+  </tr>
+  </tbody>
+</table>
+
+<p *ngIf="!companyData?.contacts?.length">Kontaktiniai duomenys nepateikti.</p>

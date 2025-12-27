@@ -1,0 +1,70 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h3>Įmonės registracijos forma</h3>
+
+  <div>
+    <label>Įmonės pavadinimas *</label>
+    <input type="text" formControlName="companyName" />
+  </div>
+
+  <div>
+    <label>Įmonės kodas</label>
+    <input type="text" formControlName="companyCode" />
+  </div>
+
+  <div>
+    <label>PVM kodas</label>
+    <input type="text" formControlName="vatCode" />
+  </div>
+
+  <div>
+    <label>Adresas</label>
+    <input type="text" formControlName="address" />
+  </div>
+
+  <div>
+    <label>El. paštas *</label>
+    <input type="email" formControlName="email" />
+  </div>
+
+  <div>
+    <label>Telefonas</label>
+    <input type="text" formControlName="phone" placeholder="+370" />
+  </div>
+
+  <button type="button" (click)="toggleContactForm()">Papildomi duomenys</button>
+
+  <div *ngIf="showContactForm">
+    <h3>Darbuotojo kontaktai</h3>
+
+    <div formArrayName="contacts">
+      <div *ngFor="let contact of contacts.controls; let i = index" [formGroupName]="i">
+        <div>
+          <label>Vardas</label>
+          <input type="text" formControlName="contactName" />
+        </div>
+
+        <div>
+          <label>Pavardė</label>
+          <input type="text" formControlName="contactSurname" />
+        </div>
+
+        <div>
+          <label>Pareigos</label>
+          <input type="text" formControlName="contactPosition" />
+        </div>
+
+        <div>
+          <label>Telefono numeris</label>
+          <input type="text" formControlName="contactPhone" />
+        </div>
+
+        <button type="button" (click)="removeContact(i)">Pašalinti kontaktą</button>
+        <hr />
+      </div>
+    </div>
+
+    <button type="button" (click)="addContact()">Pridėti kontaktą</button>
+  </div>
+
+  <button type="submit">Registruoti</button>
+</form>
