@@ -35,15 +35,18 @@ export class LoginComponent {
     this.authService.login(
       this.loginForm.value.email,
       this.loginForm.value.password
-    ).then(() => {
-      this.router.navigate(['/companies']);
-    }).catch(() => {
-      this.errorMessage = 'Neteisingi prisijungimo duomenys';
-    }).finally(() => {
-      this.isLoading = false;
-    });
-  }
+    )
+      .then(() => {
 
+        this.router.navigate(['/books']);
+      })
+      .catch(() => {
+        this.errorMessage = 'Neteisingi prisijungimo duomenys';
+      })
+      .finally(() => {
+        this.isLoading = false;
+      });
+  }
 
   navigateToRegister() {
     this.router.navigate(['/register']);

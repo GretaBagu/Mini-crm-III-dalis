@@ -1,37 +1,31 @@
 <h2>Patvirtinimo duomenys</h2>
 
 <table>
-  <tr><th>Įmonės pavadinimas</th><td>{{ companyData?.companyName }}</td></tr>
-  <tr><th>Įmonės kodas</th><td>{{ companyData?.companyCode }}</td></tr>
-  <tr><th>PVM kodas</th><td>{{ companyData?.vatCode }}</td></tr>
-  <tr><th>Adresas</th><td>{{ companyData?.address }}</td></tr>
-  <tr><th>El. paštas</th><td>{{ companyData?.email }}</td></tr>
-  <tr><th>Telefonas</th><td>{{ companyData?.phone }}</td></tr>
-
+  <tr><th>Pavadinimas</th><td>{{ bookData?.title }}</td></tr>
+  <tr><th>Puslapių skaičius</th><td>{{ bookData?.pages }}</td></tr>
+  <tr><th>ISBN</th><td>{{ bookData?.isbn }}</td></tr>
+  <tr><th>Trumpas aprašymas</th><td>{{ bookData?.short_description || 'Nenurodytas' }}</td></tr>
 </table>
 
 <br />
-<h3>Kontaktiniai asmenys</h3>
-<table *ngIf="companyData?.contacts?.length">
+<h3>Autoriai</h3>
+<table *ngIf="bookData?.authors?.length">
   <thead>
   <tr>
     <th>Vardas</th>
     <th>Pavardė</th>
-    <th>Pareigos</th>
-    <th>Telefonas</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let contact of companyData.contacts">
-    <td>{{ contact.contactName }}</td>
-    <td>{{ contact.contactSurname }}</td>
-    <td>{{ contact.contactPosition }}</td>
-    <td>{{ contact.contactPhone }}</td>
+  <tr *ngFor="let author of bookData.authors">
+    <td>{{ author.name }}</td>
+    <td>{{ author.surname }}</td>
   </tr>
   </tbody>
 </table>
 
-<p *ngIf="!companyData?.contacts?.length">Kontaktiniai duomenys nepateikti.</p>
+<p *ngIf="!bookData?.authors?.length">Autoriai nepateikti.</p>
+
 <div style="margin-top: 30px;">
-  <button (click)="goBack()">🔙 Grįžti į įmonių sąrašą</button>
+  <button (click)="goBack()">🔙 Grįžti į knygų sąrašą</button>
 </div>

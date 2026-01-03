@@ -9,9 +9,9 @@ export const authGuard: CanActivateFn = (route, state) => {
   return new Promise<boolean>((resolve) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        resolve(true); // ✅ Prisijungęs – leidžiam
+        resolve(true);
       } else {
-        router.navigate(['/login']); // ❌ Neprisijungęs – peradresuojam
+        router.navigate(['/login']);
         resolve(false);
       }
     });

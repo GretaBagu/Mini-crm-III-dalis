@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router'; // ⬅️ papildyta Router
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-confirmation',
@@ -10,13 +10,14 @@ import { Router, RouterModule } from '@angular/router'; // ⬅️ papildyta Rout
   styleUrls: ['./confirmation.component.css']
 })
 export class ConfirmationComponent {
-  companyData = history.state.data;
+  bookData: any;
 
   constructor(private router: Router) {
-    console.log('Gauti duomenys:', this.companyData);
+    const nav = this.router.getCurrentNavigation();
+    this.bookData = nav?.extras?.state?.['data'] || null;
   }
 
   goBack() {
-    this.router.navigate(['/companies']); // 👈 pakeisk "/companies" į savo realų maršrutą, jei skiriasi
+    this.router.navigate(['/books']);
   }
 }

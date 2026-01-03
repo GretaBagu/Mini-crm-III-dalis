@@ -42,6 +42,7 @@ export class RegisterComponent {
         this.successMessage = 'Registracija sėkminga! Dabar galite prisijungti.';
         setTimeout(() => this.router.navigate(['/login']), 2000);
       })
+
       .catch(error => {
         this.errorMessage = this.mapError(error.code);
       })

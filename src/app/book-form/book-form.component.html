@@ -1,0 +1,60 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h2>Knygos registracija</h2>
+
+  <!-- Pavadinimas -->
+  <div>
+    <label>Pavadinimas *</label>
+    <input type="text" formControlName="title" />
+    <div *ngIf="form.get('title')?.invalid && form.get('title')?.touched">
+      <small style="color:red">Pavadinimas yra privalomas</small>
+    </div>
+  </div>
+
+  <!-- Puslapių skaičius -->
+  <div>
+    <label>Puslapių skaičius *</label>
+    <input type="text" formControlName="pages" />
+    <div *ngIf="form.get('pages')?.invalid && form.get('pages')?.touched">
+      <small style="color:red">Įveskite skaičių</small>
+    </div>
+  </div>
+
+  <!-- ISBN -->
+  <div>
+    <label>ISBN *</label>
+    <input type="text" formControlName="isbn" />
+    <div *ngIf="form.get('isbn')?.invalid && form.get('isbn')?.touched">
+      <small style="color:red">ISBN yra privalomas</small>
+    </div>
+  </div>
+
+  <!-- Trumpas aprašymas -->
+  <div>
+    <label>Trumpas aprašymas</label>
+    <textarea formControlName="short_description"></textarea>
+  </div>
+
+  <!-- Autoriai -->
+  <button type="button" (click)="toggleAuthors()">Pridėti autorių</button>
+
+  <div *ngIf="showAuthors" formArrayName="authors">
+    <div *ngFor="let author of authors.controls; let i = index" [formGroupName]="i" style="margin-top: 10px;">
+      <h4>Autorius {{ i + 1 }}</h4>
+
+      <label>Vardas</label>
+      <input type="text" formControlName="name" />
+
+      <label>Pavardė</label>
+      <input type="text" formControlName="surname" />
+
+      <button type="button" (click)="removeAuthor(i)">❌ Pašalinti</button>
+      <hr />
+    </div>
+
+    <button type="button" (click)="addAuthor()">Pridėti dar vieną autorių</button>
+  </div>
+
+  <br />
+  <button type="submit">Išsaugoti knygą</button>
+</form>
+

@@ -1,1 +1,109 @@
-/* You can add global styles to this file, and also import other style files */
+/* 🌿 FONAS */
+body {
+  background-image: url('assets/rm119batch4-mynt-21-leavesframe.jpg');
+  background-size: cover;
+  background-attachment: fixed; /* 🟢 svarbu: fonas lieka vietoje */
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #1b1b1b;
+}
+
+
+/* 🌟 PAGRINDINIAI TEKSTAI */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: #0a3d14;
+}
+
+label {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+p, td, th, input, textarea {
+  font-size: 15px;
+}
+
+/* 📋 LENTELĖ */
+.book-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffffcc;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.book-table th,
+.book-table td {
+  padding: 12px 16px;
+  border-top: 1px solid #e0e0e0;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.book-table th {
+  background-color: #1e7f2f;
+  color: white;
+  font-size: 15px;
+}
+
+/* 🔎 FILTRAI */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.filters input {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* 🟩 MYGTUKAI */
+button {
+  background-color: #1e7f2f;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #145f22;
+}
+
+/* ❌ DELETE + EDIT ICONS (jei naudoji) */
+.action-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* 📱 MOBILUS DIZAINAS */
+@media (max-width: 768px) {
+  .book-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}

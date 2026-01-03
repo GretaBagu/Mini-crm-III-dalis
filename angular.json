@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "mini-crm": {
+    "zalioji-biblioteka": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -56,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "mini-crm:build:production"
+              "buildTarget": "zalioji-biblioteka:build:production"
             },
             "development": {
-              "buildTarget": "mini-crm:build:development"
+              "buildTarget": "zalioji-biblioteka:build:development"
             }
           },
           "defaultConfiguration": "development"

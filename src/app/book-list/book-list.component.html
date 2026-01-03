@@ -1,0 +1,67 @@
+<!-- Paieškos filtrai -->
+<div class="filters" style="margin-top: 20px; margin-bottom: 10px;">
+  <label style="margin-right: 15px;">
+    Paieška pagal pavadinimą:
+    <input type="text" [(ngModel)]="filterTitle" (input)="onFilterChange()" />
+  </label>
+
+  <label>
+    Paieška pagal ISBN:
+    <input type="text" [(ngModel)]="filterIsbn" (input)="onFilterChange()" />
+  </label>
+</div>
+
+<!-- Antraštė -->
+<h2>Knygų sąrašas</h2>
+
+<!-- Mygtukas naujai knygai -->
+<div style="margin-bottom: 20px;">
+  <button routerLink="/form">➕ Pridėti naują knygą</button>
+</div>
+
+<!-- Krovimo indikatorius -->
+<div *ngIf="loading">⏳ Kraunama knygų sąrašas...</div>
+
+<!-- Klaida -->
+<div *ngIf="error" class="error">
+  ⚠️ Klaida: {{ error }}
+</div>
+
+<!-- Knygų lentelė -->
+<table class="book-table" *ngIf="!loading && filteredBooks.length > 0">
+  <thead>
+  <tr>
+    <th>Pavadinimas</th>
+    <th>Puslapių sk.</th>
+    <th>ISBN</th>
+    <th>Aprašymas</th>
+    <th>Autoriai</th>
+    <th>Veiksmai</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let book of filteredBooks">
+    <td>{{ book.title }}</td>
+    <td>{{ book.pages }}</td>
+    <td>{{ book.isbn }}</td>
+    <td>{{ book.short_description || '–' }}</td>
+    <td>
+        <span *ngIf="book.authors?.length > 0; else noAuthors">
+          <span *ngFor="let author of book.authors; let i = index">
+            {{ author.name }} {{ author.surname }}<span *ngIf="i < book.authors.length - 1">, </span>
+          </span>
+        </span>
+      <ng-template #noAuthors>–</ng-template>
+    </td>
+    <td>
+      <button (click)="editBook(book)">✏️</button>
+      <button (click)="deleteBook(book.id)">🗑️</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- Nėra rezultatų -->
+<div *ngIf="!loading && filteredBooks.length === 0">
+  📭 Nėra rezultatų pagal pasirinktus filtrus.
+</div>
